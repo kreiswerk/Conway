@@ -13,10 +13,10 @@ typedef struct{
 }TimeHandler; 
 
 
-TimeHandler Fram1 =  {0, 0, 100};
 
 
 
+int FrameTimer(TimeHandler *a);
 
 
 #endif

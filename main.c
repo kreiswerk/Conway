@@ -4,6 +4,7 @@
 #include "timehandling.h"
 
 //Variablen
+int workTrig = 1;
 
 //typdefs
 typedef struct{
@@ -13,6 +14,7 @@ typedef struct{
     //hier muss vielleicht noch ein pointer für eine variable eingesetzt werden
 }UserInputHandler;
 
+TimeHandler Fram1 = {0, 0, 1000000};
 
 //Funktionsdeklarationen
 int getUserInput(int input, int std, int max ,int min);
@@ -21,18 +23,25 @@ int getUserInput(int input, int std, int max ,int min);
 //Main
 int main(int argc, char **argv)
 {
-    FillField(50);
-
-    for(int a=0; a < 100; a++)
+    while(1)
     {
-        PrintIntField();
-        GenNewField();
-        printf("\n");
+        FillField(50);
+
+        if(FrameTimer(&Fram1))
+        {
+            PrintIntField();
+            printf("\n");
+            workTrig = 0;
+        }
+        else if(!workTrig)
+        {
+            workTrig = GenNewField();
+        }   
     }
-
     
-   
-
+    
+    
+    
 }
 
 
@@ -51,4 +60,3 @@ int getUserInput(int input, int std, int max ,int min)
     }
 }
 
-//was ist eigentlich die mission hier --> zeit implementieren,, frames !!!

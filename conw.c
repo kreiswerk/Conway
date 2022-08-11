@@ -316,7 +316,7 @@ int ApplyRules(int x, int y)
 }
 
 
-void GenNewField()
+int GenNewField()
 {
     //Copy array to oldarray
     for(int y = 0; y < Y_Size; y++)
@@ -335,5 +335,6 @@ void GenNewField()
             Field1.arr[x][y] = ApplyRules(x, y);
         }
     }
+    return 1;
 }
 
