@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "conw.h"
+#include "frameanim.h"
 
 //Variablen
 int userinput = 70;
@@ -9,14 +10,6 @@ int a;
 
 
 //typdefs
-typedef struct{
-    clock_t actualTime;
-    clock_t oldTime;
-    int frametime;
-}TimeHandler; 
-
-TimeHandler Fram1;
-
 typedef struct{
     int max;
     int min;
