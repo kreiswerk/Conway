@@ -1,5 +1,5 @@
 #include <time.h>
-#include "frameanim.h"
+#include "timehandling.h"
 
 int FrameTimer(TimeHandler *a)
 {

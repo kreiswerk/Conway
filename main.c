@@ -1,13 +1,9 @@
 #include <stdio.h>
 #include <time.h>
 #include "conw.h"
-#include "frameanim.h"
+#include "timehandling.h"
 
 //Variablen
-int userinput = 70;
-int generations = 50;
-int a;
-
 
 //typdefs
 typedef struct{
@@ -25,36 +21,18 @@ int getUserInput(int input, int std, int max ,int min);
 //Main
 int main(int argc, char **argv)
 {
-    Fram1.frametime = 100000;
-    printf("Fillchance: ");
-    //scanf("%i", &userinput);
-    printf("\nNumber of Generations: ");
-    //scanf("%i", &generations);
-    FillField(userinput);
+    FillField(50);
 
-    // while(a < generations)
-    // { 
-    while(1)
+    for(int a=0; a < 100; a++)
     {
-        Fram1.actualTime = clock();
-
-        if(Fram1.actualTime - Fram1.oldTime >= Fram1.frametime)
-        {
-            Fram1.oldTime = Fram1.actualTime;
-            PrintIntField();
-        }
-
-        
+        PrintIntField();
         GenNewField();
-        printf("\n");    
+        printf("\n");
     }
 
-        // a++;   
-    // }
+    
+   
 
-    int a; 
-    a = getUserInput(a, 20, 40, 30);
-    printf("\nINput = %i", a);
 }
 
 

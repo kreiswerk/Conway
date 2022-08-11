@@ -6,8 +6,8 @@
 
 
 //DEFINES
-#define X_Size 50
-#define Y_Size 50
+#define X_Size 40
+#define Y_Size 40
 
 
 //STRUCTS
