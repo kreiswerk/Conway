@@ -14,7 +14,7 @@ typedef struct{
     //hier muss vielleicht noch ein pointer für eine variable eingesetzt werden
 }UserInputHandler;
 
-TimeHandler Fram1 = {0, 0, 1000000};
+TimeHandler Fram1 = {0, 0, 200000};
 
 //Funktionsdeklarationen
 int getUserInput(int input, int std, int max ,int min);
