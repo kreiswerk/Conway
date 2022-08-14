@@ -5,6 +5,7 @@
 
 void FillField(int FillChance);
 void PrintIntField();
+void PrintCharField();
 int GenNewField();
 
 #endif

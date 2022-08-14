@@ -6,8 +6,10 @@
 
 
 //DEFINES
-#define X_Size 60
-#define Y_Size 60
+#define USECHARFIELD
+
+#define X_Size 120
+#define Y_Size 120
 
 
 //STRUCTS
@@ -19,7 +21,7 @@ typedef struct{
 field Field1;
 
 //VARIABLES
-
+char CharField[X_Size][Y_Size];
 
 
 //FUNCTIONS
@@ -56,6 +58,20 @@ void PrintIntField()
         printf("\n");
     } 
 }
+
+
+void PrintCharField()
+{
+    for(int y = 0; y < Y_Size; y++)
+    {
+        for(int x = 0; x < X_Size; x++)
+        {
+            printf("%2c", CharField[x][y]);            
+        }
+        printf("\n");
+    }
+}
+
 
 int ApplyRules(int x, int y)
 {
@@ -335,6 +351,25 @@ int GenNewField()
             Field1.arr[x][y] = ApplyRules(x, y);
         }
     }
+    
+    #ifdef USECHARFIELD
+    for(int y = 0; y < Y_Size; y++)
+    {
+        for(int x = 0; x < X_Size; x++)
+        {
+            if(Field1.arr[x][y] == 1)
+            {
+                CharField[x][y] = 'o';
+            }
+            else if(Field1.arr[x][y] == 0)
+            {
+                CharField[x][y] = ' ';
+            }    
+
+        }
+    }
+    #endif
+
     return 1;
 }
 
