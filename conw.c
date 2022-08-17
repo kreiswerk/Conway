@@ -8,8 +8,8 @@
 //DEFINES
 #define USECHARFIELD
 
-#define X_Size 120
-#define Y_Size 120
+#define X_Size 60
+#define Y_Size 60
 
 
 //STRUCTS
@@ -359,7 +359,7 @@ int GenNewField()
         {
             if(Field1.arr[x][y] == 1)
             {
-                CharField[x][y] = 'o';
+                CharField[x][y] = '+';
             }
             else if(Field1.arr[x][y] == 0)
             {

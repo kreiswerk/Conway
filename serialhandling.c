@@ -6,11 +6,37 @@
 #include <termios.h>
 #include <unistd.h>
 
+#include "serialhandling.h"
 
-int main() 
+//main mission now 
+
+
+int serial_port;
+char devicePath[] = "/dev/tty.usbserial-110";
+
+int serialIn;
+int oldSerial;
+static int triggerarr[4];
+
+
+int main()
 {
-    char devicePath[] = "/dev/tty.usbserial-110";
-    int serial_port = open(devicePath, O_RDONLY | O_NONBLOCK);
+    int *p;
+    ConfigureSerial();
+    
+    while(1)
+    {
+        p = ReadSerial();
+        printf("%i\t%i\t%i\t%i\n", p[0], p[1], p[2], p[3]);
+    }
+}
+
+
+
+int ConfigureSerial()
+{
+    
+    serial_port = open(devicePath, O_RDONLY | O_NONBLOCK);;
 
     struct termios tty;
 
@@ -49,14 +75,22 @@ int main()
     if(tcsetattr(serial_port, TCSANOW, &tty) != 0)
     {
         printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
+        return 1;
     }
-
-    int arr[256];
-
-    while(1)
-    {
-        size_t nrOfBytes = read(serial_port, &arr, sizeof(arr));
-        printf("%zu %i\n", nrOfBytes, arr[0]);
-    }
-
 }
+
+int *ReadSerial()
+{
+
+    read(serial_port, &serialIn, sizeof(serialIn));
+
+    triggerarr[0] = serialIn & 1;        //(~oldSerial & serialIn) & 1;
+    triggerarr[1] = (serialIn >> 1) & 1; //((~oldSerial & serialIn) >> 1) & 1;
+    triggerarr[2] = (serialIn >> 2) & 1; //((~oldSerial & serialIn) >> 2) & 1;
+    triggerarr[3] = (serialIn >> 3) & 1; //((~oldSerial & serialIn) >> 3) & 1;
+
+    oldSerial = serialIn;
+    
+    return triggerarr;
+}
+
