@@ -14,6 +14,7 @@ typedef struct{
     //hier muss vielleicht noch ein pointer für eine variable eingesetzt werden
 }UserInputHandler;
 
+GameHandler Game1 = {0, 0, 0, 0, 0, 0};
 TimeHandler Fram1 = {0, 0, 100000};
 
 //Funktionsdeklarationen
