@@ -8,9 +8,7 @@
 
 #include "serialhandling.h"
 
-//main mission now 
-
-
+//VARIABLES
 int serial_port;
 char devicePath[] = "/dev/tty.usbserial-110";
 
@@ -32,7 +30,7 @@ int main()
 }
 
 
-
+//FUNCTIONS
 int ConfigureSerial()
 {
     

@@ -3,21 +3,21 @@
 #include "conw.h"
 #include "timehandling.h"
 
-//Variablen
+//VARIABLES
 int workTrig = 0;
 
-//typdefs
+//STRUCTS
 typedef struct{
     int max;
     int min;
     int std;
-    //hier muss vielleicht noch ein pointer für eine variable eingesetzt werden
+    //maybe add pointer here
 }UserInputHandler;
 
 GameHandler Game1 = {0, 0, 0, 0, 0, 0};
 TimeHandler Fram1 = {0, 0, 100000};
 
-//Funktionsdeklarationen
+//FUNCTION DECLARATIONS
 int getUserInput(int input, int std, int max ,int min);
 
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 }
 
 
-//Funktionen
+//FUNCTIONS
 int getUserInput(int input, int std, int max ,int min)
 {
     printf("enter user input: ");

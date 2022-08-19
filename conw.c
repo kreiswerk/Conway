@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-/* Allgemein wird bei arrays angenommmen das arr[x][y]      */
-/* sowie das bei for schleifen immer die ganze zeile        */
-/*  gelesen und dann in die nächste spalte gesprungen wird  */
+
+/*  
+generally arrays are read or edited in a way that
+rows(x) are read first and on the end of the row 
+we advance to a new column(y) 
+*/
 
 
 //DEFINES
@@ -79,14 +82,14 @@ int ApplyRules(int x, int y)
 
     if((x == 0) | (x == X_Size-1) | (y == 0) | (y== Y_Size-1))
     {
-        //überprüft ob es sich um eine ecke handelt
+        //checks if current field is a corner
         if(((x==0)&(y==0)) | ((x==0)&(y==Y_Size-1)) | ((x==X_Size-1)&(y==0)) | ((x==X_Size-1)&(y==Y_Size-1)))
         {
-            //hier müssen ecken checken implementiert werden
+            //check corners here 
         }
         else
         {
-            //Alle Felder an der linken Border
+            //all fields on the left border
             if(x == 0)
             {
                 if(Field1.oldarr[X_Size-1][y-1] == 1)
@@ -130,7 +133,7 @@ int ApplyRules(int x, int y)
                 }
             }
 
-            //Alle Felder an der rechten Border
+            //all fields on the right border
             if(x == X_Size-1)
             {
                 if(Field1.oldarr[x-1][y-1] == 1)
@@ -174,7 +177,7 @@ int ApplyRules(int x, int y)
                 }
             }
 
-            //ALle Felder an der unteren Border
+            //all fields on the bottom border
             if(y == 0)
             {
                 if(Field1.oldarr[x-1][Y_Size-1] == 1)
@@ -218,7 +221,7 @@ int ApplyRules(int x, int y)
                 }
             }
 
-            //Alle Felder an der oberen Border
+            //all fields on the top border
             if(y == Y_Size-1)
             {
                 if(Field1.oldarr[x-1][y-1] == 1)
@@ -334,7 +337,7 @@ int ApplyRules(int x, int y)
 
 int GenNewField()
 {
-    //Copy array to oldarray
+    //copy array to oldarray
     for(int y = 0; y < Y_Size; y++)
     {
         for(int x = 0; x < X_Size; x++)
@@ -343,7 +346,7 @@ int GenNewField()
         }
     }
 
-    //Apply rules to oldarray to generate new array
+    //apply rules to oldarray to generate new array
     for(int y = 0; y < Y_Size; y++)
     {
         for(int x = 0; x < X_Size; x++)
